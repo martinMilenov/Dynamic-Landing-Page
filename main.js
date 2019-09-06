@@ -4,13 +4,14 @@ const time = document.getElementById('time'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus');
 
+// Options
 const showAmPm = true;
 
 // Show Time
 function showTime() {
   let today = new Date(),
     hour = today.getHours(),
-    minutes = today.getMinutes(),
+    min = today.getMinutes(),
     sec = today.getSeconds();
 
   // Set AM or PM
@@ -20,9 +21,9 @@ function showTime() {
   hour = hour % 12 || 12;
 
   // Output Time
-  time.innerHTML = `${hour}<span>:</span>${addZero(
-    minutes
-  )}<span>:</span>${addZero(sec)} ${showAmPm ? amPm : ''}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
+    sec
+  )} ${showAmPm ? amPm : ''}`;
 
   setTimeout(showTime, 1000);
 }
@@ -33,31 +34,25 @@ function addZero(n) {
 }
 
 // Set Background and Greeting
-function setBackGround() {
+function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
   if (hour < 12) {
     // Morning
-    document.body.style.backgroundImage = "url('../img/morning.jpg')";
-    document.body.style.backgroundRepeat = 'no repeat';
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-    greeting.textContent = 'Good Morning';
+    document.body.style.backgroundImage =
+      "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    greeting.textContent = 'Good Morning, ';
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage = "url('../img/afternoon.jpg')";
-    document.body.style.backgroundRepeat = 'no repeat';
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-    greeting.textContent = 'Good Afternoon';
+    document.body.style.backgroundImage =
+      "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
-    document.body.style.backgroundImage = "url('../img/night.jpg')";
-    document.body.style.backgroundRepeat = 'no repeat';
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-    greeting.textContent = 'Good Evening';
+    document.body.style.backgroundImage =
+      "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
 }
@@ -74,8 +69,8 @@ function getName() {
 // Set Name
 function setName(e) {
   if (e.type === 'keypress') {
-    // Make sure enter is press
-    if (e.keyCode == 13 || e.which == 13) {
+    // Make sure enter is pressed
+    if (e.which == 13 || e.keyCode == 13) {
       localStorage.setItem('name', e.target.innerText);
       name.blur();
     }
@@ -96,8 +91,8 @@ function getFocus() {
 // Set Focus
 function setFocus(e) {
   if (e.type === 'keypress') {
-    // Make sure enter is press
-    if (e.keyCode == 13 || e.which == 13) {
+    // Make sure enter is pressed
+    if (e.which == 13 || e.keyCode == 13) {
       localStorage.setItem('focus', e.target.innerText);
       focus.blur();
     }
@@ -113,6 +108,6 @@ focus.addEventListener('blur', setFocus);
 
 // Run
 showTime();
-setBackGround();
+setBgGreet();
 getName();
 getFocus();
