@@ -42,16 +42,22 @@ function setBgGreet() {
     // Morning
     document.body.style.backgroundImage =
       "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    document.body.style.backgroundRepeat = 'no repeat';
+    document.body.style.backgroundSize = 'cover';
     greeting.textContent = 'Good Morning, ';
   } else if (hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
       "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    document.body.style.backgroundRepeat = 'no repeat';
+    document.body.style.backgroundSize = 'cover';
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
     document.body.style.backgroundImage =
       "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    document.body.style.backgroundRepeat = 'no repeat';
+    document.body.style.backgroundSize = 'cover';
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
